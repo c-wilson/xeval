@@ -19,7 +19,7 @@ def reach(X: np.array, *args, **kwargs):
     """
     if len(X):
         score = X.mean()
-        confidence = _sigmoid(score, 2., 6.)
+        confidence = _sigmoid(len(X), 2., 6.)
     else:
         score, confidence = 0., 0.
     return score, confidence
@@ -34,7 +34,7 @@ def clarity(X: np.array, *args, **kwargs):
     """
     if len(X):
         score = X.mean()
-        confidence = _sigmoid(score, 4., 8.)
+        confidence = _sigmoid(len(X), 4., 8.)
     else:
         score, confidence = 0, 0
     return score, confidence
