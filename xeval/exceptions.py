@@ -1,14 +1,6 @@
 """
-Exceptions need separate module to avoid cyclic dependancies.
+Exceptions need separate module to avoid cyclic dependencies.
 """
-
-
-class PostError(Exception):
-    pass
-
-
-class GetError(Exception):
-    pass
 
 
 class ReputeeNotFoundError(Exception):

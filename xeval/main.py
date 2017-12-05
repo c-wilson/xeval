@@ -50,7 +50,8 @@ get_json_schema = {
 
 class ReptorResource:
     """
-    Falcon application for reputation.
+    Falcon application for reputation. It only tries to work with things that are directly web-related.
+    It does not include the rules or algorithms for data handling once the JSON is digested.
     """
 
     def __init__(self, ):
