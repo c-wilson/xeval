@@ -13,7 +13,7 @@ $ conda create -n xeval python=3.6
 ```
 $ source activate xeval
 (xeval) $ conda install -c conda-forge falcon
-(xeval) $ conda install numpy requests jsonschema 
+(xeval) $ conda install numpy requests jsonschema pytest
 ```
 4. Clone this repository and run setup.py from xeval environment:
 ```

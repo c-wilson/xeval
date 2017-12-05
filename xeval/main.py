@@ -156,16 +156,17 @@ parser = argparse.ArgumentParser(
     'reptorServer',
     description="A RESTful reputation server we can all enjoy."
 )
-
 parser.add_argument('--address', type=str, default='localhost', help='IP address for server (default localhost)')
 parser.add_argument('--port', type=int, default=8000, help='port for http server (default 8000)')
 
 
+repter_resource = ReptorResource()
+app = falcon.API()
+app.add_route('/reptor', repter_resource)
+
+
 def main():
     args = parser.parse_args()
-    app = falcon.API()
-    repter_resource = ReptorResource()
-    app.add_route('/reptor', repter_resource)
     httpd = simple_server.make_server(args.address, args.port, app)
     httpd.serve_forever()
 

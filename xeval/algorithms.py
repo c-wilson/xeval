@@ -56,6 +56,8 @@ def clout(X_clarity: np.array, X_reach:np.array, *args, **kwargs):
     clarity_val, clarity_con = clarity(X_clarity)
 
     total_con = reach_con + clarity_con
+    if total_con == 0.:
+        return 0., 0.
     r_weight, c_weight = [x / total_con for x in (reach_con, clarity_con)]
     weighted_avg = r_weight * reach_val + c_weight * clarity_val
     score = weighted_avg / 10.  # normalize to max score value.
@@ -76,12 +78,12 @@ def _sigmoid(x: float, a: float, b: float) -> float:
     :return: scalar
     """
 
-    midpoint = a+b / 2.
+    midpoint = (a+b) / 2.
     if x <= a:
         return 0.
     elif a < x < midpoint:
         return 2. * ((x - a) / (b - a)) ** 2.
     elif midpoint <= x < b:
-        return 1. - 2. * ((x - a) / (b - a)) ** 2
+        return 1. - 2. * ((x - b) / (b - a)) ** 2
     else:  # x >= b
         return 1.
